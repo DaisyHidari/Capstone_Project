@@ -9,6 +9,9 @@ import NavBar from "./components/NavBar";
 import ProductDetails from "./components/ProductDetails";
 import ProductList from "./components/ProductList";
 import Register from "./components/Register";
+import CartPage from './components/CartPage';
+import CheckoutPage from './components/CheckoutPage';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   const [productID, setProductID] = useState(null);
@@ -16,6 +19,18 @@ function App() {
   return (
     <>
       <NavBar />
+
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/products/:id" component={ProductPage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/cart" component={CartPage} />
+        <PrivateRoute path="/checkout" component={CheckoutPage} />
+        <PrivateRoute path="/success" component={SuccessPage} />
+        <PrivateRoute path="/admin" component={AdminDashboard} />
+      </Switch>
+
       <Link to="/" style={{ color: "#858f06" }}>
         All Shoes
       </Link>
